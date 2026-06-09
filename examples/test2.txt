@@ -1,0 +1,15 @@
+Ejemplo 3: Simulación de Flujo de Caja Familiar
+Un ejemplo clásico para mapear múltiples variables en tu tabla de símbolos. Si el ahorro neto supera la meta establecida, se gatilla la simulación del impuesto sobre el ingreso base.
+---------------------------------------
+Fragmento de código
+SALARIO_NETO = 4500;
+INGRESO_EXTRA = 300;
+CUOTA_PRESTAMO = 600;
+TRANSPORTE = 250;
+GASTOS_VARIOS = 500;
+
+INGRESOS_TOTALES = SALARIO_NETO + INGRESO_EXTRA;
+EGRESOS_TOTALES = CUOTA_PRESTAMO + TRANSPORTE + GASTOS_VARIOS;
+AHORRO = INGRESOS_TOTALES - EGRESOS_TOTALES;
+
+SI AHORRO > 3000 ENTONCES CALCULAR_IMPUESTO(SALARIO_NETO);

@@ -1,0 +1,683 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> lista_instrucciones
+Rule 2     lista_instrucciones -> instruccion
+Rule 3     lista_instrucciones -> lista_instrucciones instruccion
+Rule 4     instruccion -> asignacion
+Rule 5     instruccion -> estructura_condicional
+Rule 6     instruccion -> llamada_funcion
+Rule 7     asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA
+Rule 8     estructura_condicional -> SI condicion ENTONCES instruccion
+Rule 9     llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA
+Rule 10    condicion -> expresion MAYOR expresion
+Rule 11    condicion -> expresion MENOR expresion
+Rule 12    condicion -> expresion IGUAL expresion
+Rule 13    expresion -> expresion MAS expresion
+Rule 14    expresion -> expresion MENOS expresion
+Rule 15    expresion -> expresion POR expresion
+Rule 16    expresion -> expresion DIVIDIDO expresion
+Rule 17    expresion -> PAR_IZQ expresion PAR_DER
+Rule 18    expresion -> NUMERO
+Rule 19    expresion -> ID
+
+Terminals, with rules where they appear
+
+ASIGNAR              : 7
+CALCULAR_IMPUESTO    : 9
+DIVIDIDO             : 16
+ENTONCES             : 8
+ID                   : 7 19
+IGUAL                : 12
+MAS                  : 13
+MAYOR                : 10
+MENOR                : 11
+MENOS                : 14
+NUMERO               : 18
+PAR_DER              : 9 17
+PAR_IZQ              : 9 17
+POR                  : 15
+PUNTO_Y_COMA         : 7 9
+SI                   : 8
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 4
+condicion            : 8
+estructura_condicional : 5
+expresion            : 7 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17
+instruccion          : 2 3 8
+lista_instrucciones  : 1 3
+llamada_funcion      : 6
+programa             : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . lista_instrucciones
+    (2) lista_instrucciones -> . instruccion
+    (3) lista_instrucciones -> . lista_instrucciones instruccion
+    (4) instruccion -> . asignacion
+    (5) instruccion -> . estructura_condicional
+    (6) instruccion -> . llamada_funcion
+    (7) asignacion -> . ID ASIGNAR expresion PUNTO_Y_COMA
+    (8) estructura_condicional -> . SI condicion ENTONCES instruccion
+    (9) llamada_funcion -> . CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA
+
+    ID              shift and go to state 7
+    SI              shift and go to state 8
+    CALCULAR_IMPUESTO shift and go to state 9
+
+    programa                       shift and go to state 1
+    lista_instrucciones            shift and go to state 2
+    instruccion                    shift and go to state 3
+    asignacion                     shift and go to state 4
+    estructura_condicional         shift and go to state 5
+    llamada_funcion                shift and go to state 6
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> lista_instrucciones .
+    (3) lista_instrucciones -> lista_instrucciones . instruccion
+    (4) instruccion -> . asignacion
+    (5) instruccion -> . estructura_condicional
+    (6) instruccion -> . llamada_funcion
+    (7) asignacion -> . ID ASIGNAR expresion PUNTO_Y_COMA
+    (8) estructura_condicional -> . SI condicion ENTONCES instruccion
+    (9) llamada_funcion -> . CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA
+
+    $end            reduce using rule 1 (programa -> lista_instrucciones .)
+    ID              shift and go to state 7
+    SI              shift and go to state 8
+    CALCULAR_IMPUESTO shift and go to state 9
+
+    instruccion                    shift and go to state 10
+    asignacion                     shift and go to state 4
+    estructura_condicional         shift and go to state 5
+    llamada_funcion                shift and go to state 6
+
+state 3
+
+    (2) lista_instrucciones -> instruccion .
+
+    ID              reduce using rule 2 (lista_instrucciones -> instruccion .)
+    SI              reduce using rule 2 (lista_instrucciones -> instruccion .)
+    CALCULAR_IMPUESTO reduce using rule 2 (lista_instrucciones -> instruccion .)
+    $end            reduce using rule 2 (lista_instrucciones -> instruccion .)
+
+
+state 4
+
+    (4) instruccion -> asignacion .
+
+    ID              reduce using rule 4 (instruccion -> asignacion .)
+    SI              reduce using rule 4 (instruccion -> asignacion .)
+    CALCULAR_IMPUESTO reduce using rule 4 (instruccion -> asignacion .)
+    $end            reduce using rule 4 (instruccion -> asignacion .)
+
+
+state 5
+
+    (5) instruccion -> estructura_condicional .
+
+    ID              reduce using rule 5 (instruccion -> estructura_condicional .)
+    SI              reduce using rule 5 (instruccion -> estructura_condicional .)
+    CALCULAR_IMPUESTO reduce using rule 5 (instruccion -> estructura_condicional .)
+    $end            reduce using rule 5 (instruccion -> estructura_condicional .)
+
+
+state 6
+
+    (6) instruccion -> llamada_funcion .
+
+    ID              reduce using rule 6 (instruccion -> llamada_funcion .)
+    SI              reduce using rule 6 (instruccion -> llamada_funcion .)
+    CALCULAR_IMPUESTO reduce using rule 6 (instruccion -> llamada_funcion .)
+    $end            reduce using rule 6 (instruccion -> llamada_funcion .)
+
+
+state 7
+
+    (7) asignacion -> ID . ASIGNAR expresion PUNTO_Y_COMA
+
+    ASIGNAR         shift and go to state 11
+
+
+state 8
+
+    (8) estructura_condicional -> SI . condicion ENTONCES instruccion
+    (10) condicion -> . expresion MAYOR expresion
+    (11) condicion -> . expresion MENOR expresion
+    (12) condicion -> . expresion IGUAL expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    condicion                      shift and go to state 12
+    expresion                      shift and go to state 13
+
+state 9
+
+    (9) llamada_funcion -> CALCULAR_IMPUESTO . PAR_IZQ expresion PAR_DER PUNTO_Y_COMA
+
+    PAR_IZQ         shift and go to state 17
+
+
+state 10
+
+    (3) lista_instrucciones -> lista_instrucciones instruccion .
+
+    ID              reduce using rule 3 (lista_instrucciones -> lista_instrucciones instruccion .)
+    SI              reduce using rule 3 (lista_instrucciones -> lista_instrucciones instruccion .)
+    CALCULAR_IMPUESTO reduce using rule 3 (lista_instrucciones -> lista_instrucciones instruccion .)
+    $end            reduce using rule 3 (lista_instrucciones -> lista_instrucciones instruccion .)
+
+
+state 11
+
+    (7) asignacion -> ID ASIGNAR . expresion PUNTO_Y_COMA
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 18
+
+state 12
+
+    (8) estructura_condicional -> SI condicion . ENTONCES instruccion
+
+    ENTONCES        shift and go to state 19
+
+
+state 13
+
+    (10) condicion -> expresion . MAYOR expresion
+    (11) condicion -> expresion . MENOR expresion
+    (12) condicion -> expresion . IGUAL expresion
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    MAYOR           shift and go to state 20
+    MENOR           shift and go to state 21
+    IGUAL           shift and go to state 22
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 14
+
+    (17) expresion -> PAR_IZQ . expresion PAR_DER
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 27
+
+state 15
+
+    (18) expresion -> NUMERO .
+
+    MAYOR           reduce using rule 18 (expresion -> NUMERO .)
+    MENOR           reduce using rule 18 (expresion -> NUMERO .)
+    IGUAL           reduce using rule 18 (expresion -> NUMERO .)
+    MAS             reduce using rule 18 (expresion -> NUMERO .)
+    MENOS           reduce using rule 18 (expresion -> NUMERO .)
+    POR             reduce using rule 18 (expresion -> NUMERO .)
+    DIVIDIDO        reduce using rule 18 (expresion -> NUMERO .)
+    PUNTO_Y_COMA    reduce using rule 18 (expresion -> NUMERO .)
+    PAR_DER         reduce using rule 18 (expresion -> NUMERO .)
+    ENTONCES        reduce using rule 18 (expresion -> NUMERO .)
+
+
+state 16
+
+    (19) expresion -> ID .
+
+    MAYOR           reduce using rule 19 (expresion -> ID .)
+    MENOR           reduce using rule 19 (expresion -> ID .)
+    IGUAL           reduce using rule 19 (expresion -> ID .)
+    MAS             reduce using rule 19 (expresion -> ID .)
+    MENOS           reduce using rule 19 (expresion -> ID .)
+    POR             reduce using rule 19 (expresion -> ID .)
+    DIVIDIDO        reduce using rule 19 (expresion -> ID .)
+    PUNTO_Y_COMA    reduce using rule 19 (expresion -> ID .)
+    PAR_DER         reduce using rule 19 (expresion -> ID .)
+    ENTONCES        reduce using rule 19 (expresion -> ID .)
+
+
+state 17
+
+    (9) llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ . expresion PAR_DER PUNTO_Y_COMA
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 28
+
+state 18
+
+    (7) asignacion -> ID ASIGNAR expresion . PUNTO_Y_COMA
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    PUNTO_Y_COMA    shift and go to state 29
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 19
+
+    (8) estructura_condicional -> SI condicion ENTONCES . instruccion
+    (4) instruccion -> . asignacion
+    (5) instruccion -> . estructura_condicional
+    (6) instruccion -> . llamada_funcion
+    (7) asignacion -> . ID ASIGNAR expresion PUNTO_Y_COMA
+    (8) estructura_condicional -> . SI condicion ENTONCES instruccion
+    (9) llamada_funcion -> . CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA
+
+    ID              shift and go to state 7
+    SI              shift and go to state 8
+    CALCULAR_IMPUESTO shift and go to state 9
+
+    instruccion                    shift and go to state 30
+    asignacion                     shift and go to state 4
+    estructura_condicional         shift and go to state 5
+    llamada_funcion                shift and go to state 6
+
+state 20
+
+    (10) condicion -> expresion MAYOR . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 31
+
+state 21
+
+    (11) condicion -> expresion MENOR . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 32
+
+state 22
+
+    (12) condicion -> expresion IGUAL . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 33
+
+state 23
+
+    (13) expresion -> expresion MAS . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 34
+
+state 24
+
+    (14) expresion -> expresion MENOS . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 35
+
+state 25
+
+    (15) expresion -> expresion POR . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 36
+
+state 26
+
+    (16) expresion -> expresion DIVIDIDO . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIVIDIDO expresion
+    (17) expresion -> . PAR_IZQ expresion PAR_DER
+    (18) expresion -> . NUMERO
+    (19) expresion -> . ID
+
+    PAR_IZQ         shift and go to state 14
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 37
+
+state 27
+
+    (17) expresion -> PAR_IZQ expresion . PAR_DER
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    PAR_DER         shift and go to state 38
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 28
+
+    (9) llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion . PAR_DER PUNTO_Y_COMA
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    PAR_DER         shift and go to state 39
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 29
+
+    (7) asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA .
+
+    ID              reduce using rule 7 (asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA .)
+    SI              reduce using rule 7 (asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA .)
+    CALCULAR_IMPUESTO reduce using rule 7 (asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA .)
+    $end            reduce using rule 7 (asignacion -> ID ASIGNAR expresion PUNTO_Y_COMA .)
+
+
+state 30
+
+    (8) estructura_condicional -> SI condicion ENTONCES instruccion .
+
+    ID              reduce using rule 8 (estructura_condicional -> SI condicion ENTONCES instruccion .)
+    SI              reduce using rule 8 (estructura_condicional -> SI condicion ENTONCES instruccion .)
+    CALCULAR_IMPUESTO reduce using rule 8 (estructura_condicional -> SI condicion ENTONCES instruccion .)
+    $end            reduce using rule 8 (estructura_condicional -> SI condicion ENTONCES instruccion .)
+
+
+state 31
+
+    (10) condicion -> expresion MAYOR expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    ENTONCES        reduce using rule 10 (condicion -> expresion MAYOR expresion .)
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 32
+
+    (11) condicion -> expresion MENOR expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    ENTONCES        reduce using rule 11 (condicion -> expresion MENOR expresion .)
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 33
+
+    (12) condicion -> expresion IGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    ENTONCES        reduce using rule 12 (condicion -> expresion IGUAL expresion .)
+    MAS             shift and go to state 23
+    MENOS           shift and go to state 24
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+
+state 34
+
+    (13) expresion -> expresion MAS expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    MAYOR           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MENOR           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    IGUAL           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MAS             reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    PUNTO_Y_COMA    reduce using rule 13 (expresion -> expresion MAS expresion .)
+    PAR_DER         reduce using rule 13 (expresion -> expresion MAS expresion .)
+    ENTONCES        reduce using rule 13 (expresion -> expresion MAS expresion .)
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+  ! POR             [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! MAS             [ shift and go to state 23 ]
+  ! MENOS           [ shift and go to state 24 ]
+
+
+state 35
+
+    (14) expresion -> expresion MENOS expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    MAYOR           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MENOR           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    IGUAL           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MAS             reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    PUNTO_Y_COMA    reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    PAR_DER         reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    ENTONCES        reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    POR             shift and go to state 25
+    DIVIDIDO        shift and go to state 26
+
+  ! POR             [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! MAS             [ shift and go to state 23 ]
+  ! MENOS           [ shift and go to state 24 ]
+
+
+state 36
+
+    (15) expresion -> expresion POR expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    MAYOR           reduce using rule 15 (expresion -> expresion POR expresion .)
+    MENOR           reduce using rule 15 (expresion -> expresion POR expresion .)
+    IGUAL           reduce using rule 15 (expresion -> expresion POR expresion .)
+    MAS             reduce using rule 15 (expresion -> expresion POR expresion .)
+    MENOS           reduce using rule 15 (expresion -> expresion POR expresion .)
+    POR             reduce using rule 15 (expresion -> expresion POR expresion .)
+    DIVIDIDO        reduce using rule 15 (expresion -> expresion POR expresion .)
+    PUNTO_Y_COMA    reduce using rule 15 (expresion -> expresion POR expresion .)
+    PAR_DER         reduce using rule 15 (expresion -> expresion POR expresion .)
+    ENTONCES        reduce using rule 15 (expresion -> expresion POR expresion .)
+
+  ! MAS             [ shift and go to state 23 ]
+  ! MENOS           [ shift and go to state 24 ]
+  ! POR             [ shift and go to state 25 ]
+  ! DIVIDIDO        [ shift and go to state 26 ]
+
+
+state 37
+
+    (16) expresion -> expresion DIVIDIDO expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIVIDIDO expresion
+
+    MAYOR           reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    MENOR           reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    IGUAL           reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    MAS             reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    MENOS           reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    POR             reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    DIVIDIDO        reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    PUNTO_Y_COMA    reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    PAR_DER         reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+    ENTONCES        reduce using rule 16 (expresion -> expresion DIVIDIDO expresion .)
+
+  ! MAS             [ shift and go to state 23 ]
+  ! MENOS           [ shift and go to state 24 ]
+  ! POR             [ shift and go to state 25 ]
+  ! DIVIDIDO        [ shift and go to state 26 ]
+
+
+state 38
+
+    (17) expresion -> PAR_IZQ expresion PAR_DER .
+
+    MAYOR           reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    MENOR           reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    IGUAL           reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    MAS             reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    MENOS           reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    POR             reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    DIVIDIDO        reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    PUNTO_Y_COMA    reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    PAR_DER         reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+    ENTONCES        reduce using rule 17 (expresion -> PAR_IZQ expresion PAR_DER .)
+
+
+state 39
+
+    (9) llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER . PUNTO_Y_COMA
+
+    PUNTO_Y_COMA    shift and go to state 40
+
+
+state 40
+
+    (9) llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA .
+
+    ID              reduce using rule 9 (llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA .)
+    SI              reduce using rule 9 (llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA .)
+    CALCULAR_IMPUESTO reduce using rule 9 (llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA .)
+    $end            reduce using rule 9 (llamada_funcion -> CALCULAR_IMPUESTO PAR_IZQ expresion PAR_DER PUNTO_Y_COMA .)
+

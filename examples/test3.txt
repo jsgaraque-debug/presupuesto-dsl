@@ -1,0 +1,14 @@
+Ejemplo 2: Presupuesto de un Proyecto Tecnológico
+Este modelo simula el balance de costos de desarrollo de software frente al cobro de un hito inicial. Si el balance es positivo, se dispara el cálculo de impuestos sobre el hito.
+----------------------------
+Fragmento de código
+---------------------------------------------
+COBRO_HITO_UNO = 6000;
+COSTO_INFRAESTRUCTURA = 800;
+HONORARIOS_DISENO = 1200;
+HONORARIOS_DESARROLLO = 2500;
+
+COSTO_TOTAL = COSTO_INFRAESTRUCTURA + HONORARIOS_DISENO + HONORARIOS_DESARROLLO;
+PROFIT = COBRO_HITO_UNO - COSTO_TOTAL;
+
+SI PROFIT > 1000 ENTONCES CALCULAR_IMPUESTO(COBRO_HITO_UNO);
